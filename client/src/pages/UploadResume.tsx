@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const UploadResume = () => {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Still used for programmatic navigation
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -53,14 +53,14 @@ const UploadResume = () => {
 
       try {
         // Replace with your API call to upload the resume
-        const response = await fetch('http://localhost:5000/api/resume/upload', {
+        const response = await fetch('https://your-hr-2ww9.onrender.com/api/resume/upload', {
           method: 'POST',
           body: formData,
         });
 
         if (response.ok) {
           alert('Resume uploaded successfully!');
-          window.location.href = '/'
+          navigate('/'); // Programmatic navigation
         } else {
           setErrorMessage('Failed to upload resume. Please try again.');
         }
@@ -78,12 +78,12 @@ const UploadResume = () => {
         <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg border border-gray-200">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Please Log In</h2>
           <p className="text-center text-gray-600 mb-6">You need to log in before uploading your resume.</p>
-          <button
-            onClick={() => navigate('/login')}
+          <Link
+            to="/login"
             className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
           >
             Go to Login
-          </button>
+          </Link>
         </div>
       </div>
     );

@@ -1,24 +1,24 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import Home from './pages/Home';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import UploadResume from './pages/UploadResume';
-
-function App() {
-
-  const router = createBrowserRouter([
-    { path: '/', element: <Home /> },
-    { path: '/login', element: <Login /> },
-    { path: '/signup', element: <Signup /> },
-    { path: '/uploadResume', element: <UploadResume/> },
-  ])
-
-  return (
-    
-      <RouterProvider router={router} />
-    
-  )
-}
-
-export default App
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+  function App() {
+    return (
+      <div>
+        <BrowserRouter>
+          
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/uploadResume" element={<UploadResume />} />
+            {/* Add additional routes here if needed */}
+          </Routes>
+          
+        </BrowserRouter>
+      </div>
+    );
+  }
+  
+  export default App;

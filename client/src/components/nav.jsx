@@ -1,12 +1,9 @@
 // import {logo} from '../assets/images
-import logo from './../assets/images/logo.png';
-import { MdOutlineShoppingBag } from "react-icons/md";
-import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
 import hamburger from "../assets/icons/hamburger.svg";
 // import cross from "../assets/icons/cross.svg";
 import { IoClose } from "react-icons/io5";
-
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +79,9 @@ const Nav = () => {
           {/* <span>/</span> */}
           {/* <MdOutlineShoppingBag className='nav_cart nav_search' /> */}
           {/* <IoIosSearch className='nav_search' /> */}
-          <a href='/login' className="nav_btn">LOGIN</a>
+          <Link to='/login' className="nav_btn">
+              LOGIN
+          </Link>
         </div>
         :<></>}
         <div className='hidden max-lg:block  mr-14 '>

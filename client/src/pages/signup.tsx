@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const Signup = () => {
     localStorage.setItem('userId', userId);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/create', {
+      const response = await axios.post('https://your-hr-2ww9.onrender.com/api/users/create', {
         userId,
         userName: formData.fullName,
         emailId: formData.email,
@@ -45,7 +46,8 @@ const Signup = () => {
       console.log('User created successfully:', response.data);
 
       // Redirect to the login page or another page after signup
-      window.location.href = '/login';
+      window.location.href = '/login'; // Example redirect (You can replace this with a Link component if needed)
+      
     } catch (err) {
       console.error('Error creating user:', err.response.data);
       setError('Error creating user. Please try again.');
@@ -113,7 +115,7 @@ const Signup = () => {
             Sign Up
           </button>
           <p className="mt-4 text-center text-sm text-gray-600">
-            Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
+            Already have an account? <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
           </p>
         </form>
       </div>

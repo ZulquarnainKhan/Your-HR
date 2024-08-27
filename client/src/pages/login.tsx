@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Login = () => {
   // State variables
@@ -15,7 +16,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { // Make sure the URL is correct
+      const response = await axios.post('https://your-hr-2ww9.onrender.com/api/users/login', { // Make sure the URL is correct
         emailId: email,
         password: password
       });
@@ -24,7 +25,7 @@ const Login = () => {
       console.log('Login successful:', response.data);
       localStorage.setItem('userId', response.data.user.userId);
       localStorage.setItem('token', response.data.token);
-      window.location.href = '/'; // Example redirect
+      window.location.href = '/'; // Example redirect (You can replace this with a Link component if needed)
       
     } catch (err) {
       // Handle error
@@ -72,7 +73,7 @@ const Login = () => {
             {loading ? 'Loading...' : 'Login'}
           </button>
           <p className="mt-4 text-center text-sm text-gray-600">
-            Don't have an account? <a href="/signup" className="text-blue-600 hover:underline">Sign up</a>
+            Don't have an account? <Link to="/signup" className="text-blue-600 hover:underline">Sign up</Link>
           </p>
         </form>
       </div>
